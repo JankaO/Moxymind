@@ -1,75 +1,69 @@
 ## Moxymind Playwright Tests
 
-Test suite covering key Saucedemo UI flows and Reqres API endpoints. The scenarios are written in TypeScript using the Playwright test runner.
+Táto zložka obsahuje automatické testy pre web Saucedemo a API Reqres. Testy sú v TypeScripte a spúšťajú sa cez Playwright.
 
-### Požiadavky
-- Node.js 18 alebo novší (overíš príkazom `node -v`)
-- npm (dodávané s Node.js)
+### Čo potrebuješ
+- Node.js 18+ (`node -v` ti ukáže verziu)
+- npm (je súčasťou inštalácie Node.js)
 
-### Inštalácia
-1. Naklonuj repozitár (pozri časť *Publikovanie na GitHub* nižšie).
-2. Nainštaluj závislosti:
+### Ako projekt pripraviť
+1. Naklonuj repozitár (postup nižšie v kapitole „Ako to nahrať na GitHub“).
+2. Nainštaluj balíčky:
    ```bash
    npm install
    ```
-3. Stiahni Playwright prehliadače (nutné pri prvom spustení):
+3. Stiahni prehliadače, ktoré Playwright používa:
    ```bash
    npx playwright install
    ```
-4. (Voliteľné) nastav API kľúč pre Reqres:
+4. Ak používaš API kľúč pre Reqres, nastav ho:
    ```bash
    export REQRES_API_KEY="tvoj-kľúč"
    ```
-   alebo pridaj hodnotu do `.env` súboru v tvare `REQRES_API_KEY=...`.
+   alebo pridaj riadok `REQRES_API_KEY=...` do súboru `.env`.
 
-### Spustenie testov
-- Spusť všetky testy (UI aj API):
+### Ako spustiť testy
+- Všetky testy naraz:
   ```bash
   npm test
   ```
-- Beh konkrétneho testu:
+- Jeden konkrétny test:
   ```bash
   npx playwright test tests/tc01LoginSuccess.spec.ts
   ```
-- Spustenie s viditeľným prehliadačom:
+- Viditeľný režim (otvorí prehliadač):
   ```bash
   npm run test:headed
   ```
+- HTML report po dobehnutí testov:
+  ```bash
+  npm run test:report
+  ```
 
-Po behu UI testov nájdeš HTML report v priečinku `playwright-report`. Otvoríš ho príkazom:
-```bash
-npm run test:report
-```
+### Zložky v projekte
+- `tests/` – samotné testy (web + API)
+- `tests/data/` – vstupné dáta
+- `playwright.config.ts` – nastavenia Playwrightu
+- `.gitignore` – čo nemá ísť do gitu (napr. `node_modules`, reporty)
 
-### Štruktúra projektu
-- `tests/` – Playwright testy (web aj API)
-- `tests/data/` – testovacie dáta
-- `playwright.config.ts` – základná konfigurácia test runnera
-- `.gitignore` – ignorované súbory (napr. `node_modules`, reporty)
-
-### Publikovanie na GitHub
-1. **Inicializuj git:**
+### Ako to nahrať na GitHub
+1. V priečinku projektu spusti:
    ```bash
    git init
    git add .
    git commit -m "Initial test suite"
    ```
-2. **Vytvor repozitár na GitHub-e:**
-   - Prihlás sa na [github.com](https://github.com) a klikni `New`.
-   - Pomenuj repozitár (napr. `moxymind-playwright-tests`) a nechaj ho `Public` alebo `Private` podľa potreby.
-   - Neklikaj na možnosť „Initialize with README“, aby si predišiel konfliktom.
-3. **Pridaj remote a nahraj kód:**
+2. Na [github.com](https://github.com) klikni `New repository`, zadaj názov (napr. `moxymind-playwright-tests`) a repo vytvor bez predvyplneného README.
+3. Prepoj lokál s GitHubom:
    ```bash
    git remote add origin https://github.com/<tvoje-uzivatelske-meno>/<nazov-repa>.git
    git branch -M main
    git push -u origin main
    ```
-4. **Over README a pokyny:** na GitHub stránke repozitára by mali byť zobrazené kroky pre lokálne spustenie (z tejto časti README).
+4. Skontroluj stránku repozitára – README by malo obsahovať tieto inštrukcie, aby vedel projekt spustiť každý.
 
-### Udržiavanie projektu
-- Pred commitom spusti `npm test`, aby si overil, že všetko prebehne úspešne.
-- Ak pridáš nové závislosti, aktualizuj README.
-- Pri významných zmenách scénarov zváž pridanie poznámok do `CHANGELOG.md` (ak ho založíš).
+### Udržiavanie
+- Pred pushom si spusti `npm test`, aby bolo jasné, že všetko prešlo.
+- Pri nových knihovniciach nezabudni zaktualizovať README.
+- Ak robíš väčšie zmeny testov, zaznač si ich (napr. do poznámok alebo budúceho changelogu).
 
---- 
-Ak potrebuješ asistenciu s generovaním reportu alebo CI pipeline, napíš. Rád pomôžem. 
