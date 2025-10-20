@@ -20,6 +20,6 @@ test('TC-003: pridanie 2 položiek, badge=2; po remove badge=1 a stav persistuje
   await expect(page.locator('.shopping_cart_badge')).toHaveText('1');
 
   await page.getByRole('button', { name: /continue shopping/i }).click();
-  await page.reload();
+  await page.waitForURL(/inventory\.html/);
   await expect(page.locator('.shopping_cart_badge')).toHaveText('1');
 });
