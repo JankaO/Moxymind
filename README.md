@@ -8,7 +8,7 @@ Do README som spísala inštrukcie, aby vedel projekt spustiť každý.
 - npm (je súčasťou inštalácie Node.js)
 
 ### Ako projekt pripraviť
-1. Naklonuj repozitár (postup nižšie v kapitole „Ako to nahrať na GitHub“).
+1. Naklonuj repozitár.
 2. Nainštaluj balíčky:
    ```bash
    npm install
